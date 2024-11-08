@@ -63,4 +63,4 @@ variable "instance_name" {
   type = string
   default = "jumphost-server"
 }
-##
+
