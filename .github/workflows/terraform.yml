@@ -35,6 +35,15 @@ jobs:
         - name: Setup Terraform with specified version on the runner
           uses: hashicorp/setup-terraform@v3
 
+        - name: Validate Environment Variables
+          run: |
+            echo "Validating environment variables..."
+            if [ -z "$AWS_ACCESS_KEY_ID" ]; then echo "ERROR: AWS_ACCESS_KEY_ID is not set"; exit 1; fi
+            if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then echo "ERROR: AWS_SECRET_ACCESS_KEY is not set"; exit 1; fi
+            if [ -z "$BUCKET_TF_STATE" ]; then echo "ERROR: BUCKET_TF_STATE is not set"; exit 1; fi
+            if [ -z "$AWS_REGION" ]; then echo "ERROR: AWS_REGION is not set"; exit 1; fi
+            echo "All required environment variables are set."
+
         - name: Terraform Init
           id: init
           run: terraform init -backend-config "bucket=$BUCKET_TF_STATE"
