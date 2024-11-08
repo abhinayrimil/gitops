@@ -16,7 +16,7 @@ env:
 
     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    BUCKET_TF_STATE: ${{ secrets.BUCKET.S3_BUCKET_TF }}
+    BUCKET_TF_STATE: ${{ secrets.S3_BUCKET_TF }}
     AWS_REGION: ap-south-1
 
 jobs:
