@@ -5,12 +5,16 @@ on:
       branches:
         - main
       paths:
-        - gitops/**
+        - iac/**
+        - '.github/workflows/terraform.yml'  # Trigger the workflow if the terraform.yml file is modified
+
     pull_request:
       branches:
          - main
       paths:
-        - gitops/** 
+        - iac/** 
+        - '.github/workflows/terraform.yml'  # Trigger the workflow if the terraform.yml file is modified
+
         
 env:
 
@@ -26,7 +30,7 @@ jobs:
         defaults:
             run:
                 shell: bash
-                working-directory: ./gitops/iac
+                working-directory: ./iac
 
         steps:
         - name: Checkout source code
